@@ -2,9 +2,9 @@
 
 Chama `agy -p` em modo headless, com a conta Google em que você já fez login no `agy`.
 
-Segurança: por padrão o Gemini roda em modo `plan` + `--sandbox`. Ele pode LER arquivos para
-responder, mas não edita nada nem roda comandos que mudem estado. Quem aplica mudanças é sempre o
-agente principal, depois de revisar. Perguntas e pesquisas rodam numa pasta temporária vazia, para
+Segurança: por padrão o Gemini roda em modo `plan` + `--sandbox`. Ele lê arquivos para responder,
+mas não edita nada nem roda comando que mude estado. Quem aplica mudança é o agente principal,
+depois de revisar. Perguntas e pesquisas rodam numa pasta temporária vazia, para
 o Gemini não enxergar a pasta de onde o servidor foi iniciado.
 
 Configuração por variáveis de ambiente (todas opcionais):
@@ -287,7 +287,7 @@ async def gemini_analisar(
 ) -> str:
     """O Gemini abre uma pasta em modo só-leitura e faz o que você pedir: revisão de código
     independente, achar bugs, mapear um repositório grande, resumir muitos arquivos, ou analisar
-    imagens, PDFs e vídeos. O conteúdo NÃO entra no seu contexto, só a resposta. `arquivos`
+    imagens, PDFs e vídeos. Só a resposta entra no seu contexto; o conteúdo lido fica com ele. `arquivos`
     (opcional) lista caminhos para ele focar; se algum estiver fora de `pasta`, a pasta onde ele
     está também é liberada para leitura. Padrão: modelo carbon com esforço high."""
     base = Path(pasta).expanduser().resolve()
